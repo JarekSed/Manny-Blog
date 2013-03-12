@@ -14,7 +14,7 @@
         $command = "SELECT username FROM users WHERE username=:value AND hash=:hashword"; //string for the command that stmt will execute
         $stmt = $db->prepare($command); //prepare creates object from string
         $stmt->bindParam(':value', $_POST["username"]);
-        $stmt->bindParam(':hashword', md5($_POST["password"]));
+        $stmt->bindParam(':hashword', md5($_POST["password"])); // md5 hashes password
         echo md5($_POST["password"]);
         if (!$stmt->execute()) {   //executes the command from the string. returns boolean
             echo "Database is down. Try again later";

@@ -14,7 +14,7 @@ function checkUsername($username, $db){
     $stmt = $db->prepare($command); //prepare creates object from string
     $stmt->bindParam(':value', $username); // puts variable $ in placeholder : while checking for string escape bs
     if (!$stmt->execute()) {   //executes the command from the string. returns boolean
-        echo "Database is down. Try again later";
+        echo "Database is down. Screwed up the command";
         exit;
     }
     $results = $stmt->fetchAll();  //returns all the results from the command
@@ -26,12 +26,12 @@ function checkUsername($username, $db){
 
 }
 function registerUser($username, $password, $db){
-    $command = "INSERT INTO Authors VALUES(:username, :password)"; // :variable acts as placeholder for $variable
+    $command = "INSERT INTO users VALUES(:username, :password)"; // :variable acts as placeholder for $variable
     $stmt = $db->prepare($command);
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':password', $password);
     if(!$stmt->execute()){             
-        echo "Database is down. Try again later"; // if connection is down or syntax in command is wrong
+        echo "Database is down. Screwed up register command"; // if connection is down or syntax in command is wrong
         exit;
     }
     return true;
