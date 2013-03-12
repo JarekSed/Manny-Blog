@@ -11,7 +11,7 @@
         header("Location: http://jsedlacek.info/~mjl288/Manny-Blog/index.php");
     }else{
 
-        $command = "SELECT username FROM users WHERE username=:value AND hash=:hashword"; //string for the command that stmt will execute
+        $command = "SELECT username FROM Authors WHERE username=:value AND hash=:hashword"; //string for the command that stmt will execute
         $stmt = $db->prepare($command); //prepare creates object from string
         $stmt->bindParam(':value', $_POST["username"]);
         $stmt->bindParam(':hashword', md5($_POST["password"])); // md5 hashes password

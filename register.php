@@ -25,13 +25,14 @@ function checkUsername($username, $db){
     }
 
 }
-function registerUser($username, $password, $db){
-    $command = "INSERT INTO users VALUES(:username, :password)"; // :variable acts as placeholder for $variable
+function registerUser($username, $hashword, $db){
+    $command = "INSERT INTO Authors VALUES(0, :username, :hashword)"; // :variable acts as placeholder for $variable
     $stmt = $db->prepare($command);
     $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':hashword', $hashword);
     if(!$stmt->execute()){             
-        echo "Database is down. Screwed up register command"; // if connection is down or syntax in command is wrong
+        echo "Database is down. Screwed up register command <br/>"; // if connection is down or syntax in command is wrong
+        echo $command;
         exit;
     }
     return true;
@@ -51,7 +52,9 @@ if(isset($_POST["username"]) && isset($_POST["password1"]) && isset($_POST["pass
     if(checkUsername($username, $db)){
         registerUser($username, $hashword, $db);
         echo "Registration Successful";
-
+        ?>
+        <a href = "index.php">Back to home</a>
+        <?php
     }else{
         echo "Cannot register with a taken username";
         exit;
