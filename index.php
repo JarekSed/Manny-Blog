@@ -14,7 +14,7 @@
                 <input type = "submit" name = "logoutButton" value = "logout"/>
 
             <?php
-            
+            //bootstrap branch
             }
             
             else{
