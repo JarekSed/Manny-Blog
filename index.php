@@ -6,9 +6,9 @@
 </head>
 <body>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min,css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     
     <?php
     session_start();  // creates session array(kinda like POST) that can save  variables between pages
@@ -17,7 +17,7 @@
     ?>
         <form name = "logout" action= "login.php" method = "post">
         <input type = "submit" name = "logoutButton" value = "logout"/>
-
+        </form>
     <?php
     //bootstrap branch
     }
