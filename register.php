@@ -26,7 +26,7 @@ function checkUsername($username, $db){
 
 }
 function registerUser($username, $hashword, $db){
-    $command = "INSERT INTO Authors VALUES(0, :username, :hashword)"; // :variable acts as placeholder for $variable
+    $command = "INSERT INTO Authors (username, hash) VALUES(:username, :hashword)"; // :variable acts as placeholder for $variable
     $stmt = $db->prepare($command);
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':hashword', $hashword);
