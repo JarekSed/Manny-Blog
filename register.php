@@ -1,12 +1,18 @@
+<?php
+    require_once("common.php");
+?>
+
+<h3>Manny's Blogpost</h3>
+<h4>Registration Form</h4>
 <form name = "register" action= "register.php" method = "post">
-    username: <input type = "text" name = "username"/><br/>
-    password: <input type = "password" name = "password1"/><br/>
-    repeat password: <input type = "password" name = "password2"/>
-    <input type = "submit" value = "register" />
+    <strong>Username: </strong><input type = "text" name = "username"/><br/>
+    <strong>Password: </strong><input type = "password" name = "password1"/><br/>
+    <strong>Repeat Password: </strong><input type = "password" name = "password2"/>
+    <input type = "submit" value = "Register" />
 </form>
+<a href ="index.php">return to home page</a>
 
 <?php
-    require("database.php");
 function checkUsername($username, $db){
    
     
@@ -51,14 +57,15 @@ if(isset($_POST["username"]) && isset($_POST["password1"]) && isset($_POST["pass
     global $db;
     if(checkUsername($username, $db)){
         registerUser($username, $hashword, $db);
-        echo "Registration Successful";
+        echo "Registration Succesful";
         ?>
         <a href = "index.php">Back to home</a>
         <?php
+
+
     }else{
         echo "Cannot register with a taken username";
         exit;
     }
-
 }
 ?>

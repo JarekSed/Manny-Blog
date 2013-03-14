@@ -2,21 +2,21 @@
 
 <html lang="en">
 <head>
-    <title>Manny's Blog</title>
+    <title>Manny's Blogpost</title>
 </head>
+
 <body>  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    
     <?php
-    session_start();  // creates session array(kinda like POST) that can save  variables between pages
-    if(isset($_SESSION['username'])){
-        echo  " Hello " . $_SESSION['username']; // use "."to concatinate in php 
+    require_once("common.php");  // creates session array(kinda like POST) that can save  variables between pages
     ?>
+        <h3>Manny's Blogpost</h3>
+    <?php
+    if(isset($_SESSION['username'])){
+        echo  " Hello " . $_SESSION['username'] . "</br>"; // use "."to concatinate in php 
+    ?> 
+        <a href = "post.php">make a post</a></br>
         <form name = "logout" action= "login.php" method = "post">
-        <input type = "submit" name = "logoutButton" value = "logout"/>
+        <input type = "submit" name = "logoutButton" value = "Log Out"/>
         </form>
     <?php
     //bootstrap branch
@@ -30,10 +30,10 @@
         }
     ?>  
         <form name = "login" action= "login.php" method = "post">
-        Username: <input type = "text" name = "username"/></br>
-        Password: <input type = "password" name = "password"/></br>
-        <input type = "submit" value = "Login" />
-        </form>
+        <strong>Username: </strong><input type = "text" name = "username"/></br>
+        <strong>Password: </strong><input type = "password" name = "password"/></br>
+        <input type = "submit" value = "Log In" />
+        </form></br>
         <a href = "register.php"><strong>Register</strong></a></br>
 
     <?php
