@@ -7,11 +7,11 @@
 
 <body>  
     <?php
-    require_once("common.php");  // creates session array(kinda like POST) that can save  variables between pages
+    require_once("common.php"); 
     ?>
-        <h3>Manny's Blogpost</h3>
+    <h3>Manny's Blogpost</h3>
     <?php
-    if(isset($_SESSION['username'])){
+    if(isset($_SESSION['username'])){  //home page if user is logged in
         echo  " Hello " . $_SESSION['username'] . "</br>"; // use "."to concatinate in php 
     ?> 
         <a href = "post.php">make a post</a></br>
@@ -19,15 +19,15 @@
         <input type = "submit" name = "logoutButton" value = "Log Out"/>
         </form>
     <?php
-    //bootstrap branch
     }
     
-    else{
+    else{    //if user inputs invalid login information
         if(isset($_SESSION['loginFail'])){
             echo $_SESSION['loginFail'] . "</br>";
             echo "login fail";
             unset($_SESSION['loginFail']);
         }
+        //default home page
     ?>  
         <form name = "login" action= "login.php" method = "post">
         <strong>Username: </strong><input type = "text" name = "username"/></br>

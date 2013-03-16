@@ -6,8 +6,9 @@
 
 <?php
 require_once("database.php");
-session_start();
-function getUserName(){
+session_start();  // creates session array(kinda like POST) that can save  variables between pages
+
+function getUserName(){  //returns name of logged in user, false if not logged in
     if(isset($_SESSION['username'])){
         return $_SESSION['username'];
     }else{
@@ -15,11 +16,13 @@ function getUserName(){
     }
 }
 
-function getID(){
+function getID(){       //pulls author_ID from Author table for the logged in user
     global $db;  
     if(!isset($_SESSION['username'])){
         return false;
-        //link to login page
+        ?>
+            <a href = "index.php">Not logged in. Return to home page</a> 
+        <?php
     }
     $username = $_SESSION['username'];
     $command = "SELECT author_id FROM Authors WHERE username=:value";

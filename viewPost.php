@@ -13,13 +13,13 @@
         $postTitle = $_POST['postTitle'];
         $postBody = $_POST['postBody'];
     }
-       $command = "INSERt INTO Posts (title, content, author_id) VALUES(:title, :content, :author_id)";
+       $command = "INSERT INTO Posts (title, content, author_id) VALUES(:title, :content, :author_id)";
        $stmt = $db->prepare($command);
        $stmt->bindParam(':title', $postTitle);
        $stmt->bindParam(':content', $postBody);
        $stmt->bindParam('author_id', $authorID);
        if(!$stmt->execute()){
-            echo "screwed up command";
+            echo "screwed up mysql command";
        }else{
             echo "Post Made! </br>";
             ?>

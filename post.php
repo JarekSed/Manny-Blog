@@ -2,6 +2,7 @@
 require_once("common.php");
 if(getUserName()){
 ?>
+
 <h3>Manny's BlogPost</h3>
 <a href = "index.php">Back to Home Page</a>
 </br><form name = "postForm" action =  "viewPost.php" method = "post">
@@ -10,15 +11,11 @@ if(getUserName()){
 <input type = "submit" value = "Post"/>
 </form>
 
-
 <?php
-
 }else{
     echo "You are not logged in";
-    ?>
+?>
     <a href = "index.php">Back to home</a>
-    <?php
-    
-
+<?php
 }
 ?>
