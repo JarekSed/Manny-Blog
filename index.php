@@ -4,7 +4,6 @@
 <head>
     <title>Manny's Blogpost</title>
 </head>
-
 <body>  
     <?php
     require_once("common.php"); 
