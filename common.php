@@ -8,7 +8,11 @@
 require_once("database.php");
 session_start();  // creates session array(kinda like POST) that can save  variables between pages
 
-function getUserName(){  //returns name of logged in user, false if not logged in
+/*
+returns username if user is logged in
+returns false if not logged in
+*/
+function getUserName(){ 
     if(isset($_SESSION['username'])){
         return $_SESSION['username'];
     }else{
@@ -16,7 +20,11 @@ function getUserName(){  //returns name of logged in user, false if not logged i
     }
 }
 
-function getID(){       //pulls author_ID from Author table for the logged in user
+/*
+returns author_id from mysql Author table if user is logged in
+returns false if not logged in
+*/
+function getID(){      
     global $db;  
     if(!isset($_SESSION['username'])){
         return false;

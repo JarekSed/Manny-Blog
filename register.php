@@ -19,7 +19,12 @@
         <a href ="index.php">return to home page</a>
 
         <?php
-        function checkUsername($username, $db){  //checks to see if username is already taken, takes in username and local database as input
+        /*
+        inputs: username(string) and local database(string)
+        returns true if username is not already in Authors table
+        returns false is username is taken
+        */
+        function checkUsername($username, $db){
            
             $command = "SELECT username FROM Authors WHERE username=:value"; //string for the command that stmt will execute
             $stmt = $db->prepare($command); //prepare creates object from string
@@ -35,15 +40,18 @@
                 return false;
             }
         }
-        function registerUser($username, $hashword, $db){ //puts username and password(hashed) in database
+        /*
+        inputs: username(string), hashed password(string), local database(string)
+        returns true if mysql statement  is successfully executed, username and hasword stored into table
+        returns false if mysql statement is invalid or if database is down
+        */
+        function registerUser($username, $hashword, $db){ 
             $command = "INSERT INTO Authors (username, hash) VALUES(:username, :hashword)"; // :variable acts as placeholder for $variable
             $stmt = $db->prepare($command);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':hashword', $hashword);
             if(!$stmt->execute()){             
-                echo "Database is down. Screwed up register command <br/>"; // if connection is down or syntax in command is wrong
-                echo $command;
-                exit;
+                return false;
             }
             return true;
         }
@@ -59,16 +67,19 @@
             $hashword = md5($password1); // hashes password
             global $db; //calls the global database variable to be used in following code
             if(checkUsername($username, $db)){
-                registerUser($username, $hashword, $db);
+                if(!registerUser($username, $hashword, $db)){
+                    echo "Database is down or invalid mysql command";
+                    exit;
+                }
                 echo "Registration Succesful";
-                ?>
-                <a href = "index.php">Back to home</a>
-                <?php
-
             }else{
                 echo "Cannot register with a taken username";
                 exit;
             }
+            ?>
+            <a href = "index.php">Back to home</a>
+            <?php
+
         }
     }
 ?>
