@@ -1,0 +1,30 @@
+*{
+
+}
+
+body{
+    background-color:silver;
+    text-align:center;
+}
+a{
+    font-size:18px;
+    margin-top:20px;
+    margin-bottom:20px
+    font-color:black;
+    text-align:center;
+}
+
+a:hover{
+    color:red;
+}
+
+h3{
+    text-align:center;
+    color:gold;
+    margin-top:45px;
+}
+
+form{
+    margin-top:25px;
+
+}
