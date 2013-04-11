@@ -47,5 +47,30 @@ function getID(){
         return false;
     }
 }
+function getPosts(){
+    //getting all of the users posts to display 
+    if(!isset($_SESSION['username'])){
+        return false;
+        ?>
+            <a href = "index.php">Not logged in. Return to home page</a> 
+        <?php
+    }
+    global $db;
+    $id = getID();
+    $command = "SELECT content,title,date from Posts Where author_id=:value";
+    $stmt = $db->prepare($command);
+    $stmt->bindParam(':value', $id);
+    if(!$stmt->execute()){
+        echo "Screwed up command";
+    }
+    $results = $stmt->fetchAll();
 
+    //prints all post title,content,date from results array starting with most recent;
+    for($i = count($results)-1; $i>=0; $i--){
+        echo " Title: ". $results[$i]["title"] . "/";
+        echo " Content: " . $results[$i]["content"] . "/";
+        echo " Date: " . $results[$i]['date'];
+        echo "</br>";
+    }
+}
 ?>

@@ -10,8 +10,8 @@ if(getUserName()){
 <strong>Post: </strong><textarea class = "input-xxlarge" rows = "10"  name = "postBody"></textarea></br>
 <input type = "submit" value = "Post"/>
 </form>
-
 <?php
+getPosts();
 }else{
     echo "You are not logged in";
 ?>
