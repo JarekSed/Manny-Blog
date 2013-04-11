@@ -7,7 +7,7 @@ if(getUserName()){
 <a href = "index.php">Back to Home Page</a>
 </br><form name = "postForm" action =  "viewPost.php" method = "post">
 <strong>Post Title: </strong><input type = "text" name = "postTitle"/></br>
-<strong>Post: </strong><textarea class = "input-xxlarge" rows = "10"  name = "postBody"></textarea></br>
+<strong>Content: </strong><textarea class = "input-xxlarge" rows = "10"  name = "postBody"></textarea></br>
 <input type = "submit" value = "Post"/>
 </form>
 <?php
