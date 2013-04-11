@@ -12,7 +12,7 @@
 <h3>Manny's BlogPost</h3>
 <a href = "index.php">Back to Home Page</a></br>
 <?php
-    if(count($_POST['postTitle']) ===0 || count($_POST['postTitle'] === 0)){
+    if(strlen($_POST['postTitle']) ===0 || strlen($_POST['postTitle'] === 0)){
         echo "<strong>invalid post. input into both fields</strong></br>";
         echo  '<a href = "post.php">Make another post</a></br>';
     }else{
