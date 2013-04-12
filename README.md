@@ -1,6 +1,5 @@
 Manny-Blog
 ==========
 
-Blog Engine for Manny
+Blog Engine
 
-whatever

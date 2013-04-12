@@ -7,12 +7,19 @@
         <a href = "index.php">Back to home</a>
         <?php
     }
-    if(!isset($_POST['postTitle']) || !isset($_POST['postBody'])){
-        echo "invalid post. input into both fields";
+?>
+
+<h3>Manny's BlogPost</h3>
+<a href = "index.php">Back to Home Page</a></br>
+<?php
+    if(!isset($_POST['postTitle'])|| !isset($_POST['postTitle'])){
+        echo "<strong>invalid post. input into both fields</strong></br>";
+        echo  '<a href = "post.php">Make another post</a></br>';
     }else{
         $postTitle = $_POST['postTitle'];
         $postBody = $_POST['postBody'];
-    }
+        unset($_POST['postTitle']);
+        unset($_POST['postBOdy']);
        $command = "INSERT INTO Posts (title, content, author_id) VALUES(:title, :content, :author_id)";
        $stmt = $db->prepare($command);
        $stmt->bindParam(':title', $postTitle);
@@ -22,11 +29,11 @@
             echo "screwed up mysql command";
        }else{
             echo "Post Made! </br>";
+            getPosts();
             ?>
             <a href = "post.php">Make another post</a></br>
-            <a href = "index.php">Return to home page</a></br>
             <?php
        }
-     
+    } 
 
 ?>

@@ -28,3 +28,26 @@ form{
     margin-top:25px;
 
 }
+.posts{
+    text-align: left;
+    width: 80%;
+    margin-left:100px;
+    background-color: gold;
+    border-radius: 15px;
+    padding:5px;
+
+}
+
+#title{
+    color:red;
+    
+}
+
+#date{
+    color: purple;
+    
+}
+#hidden{
+    color:black;
+
+}

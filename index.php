@@ -8,12 +8,17 @@
     <?php
     require_once("common.php"); 
     ?>
-    <h3>Manny's Blogpost</h3>
+    <h3>Manny's BlogPost</h3>
     <?php
     if(isset($_SESSION['username'])){  //home page if user is logged in
         echo  " Hello " . $_SESSION['username'] . "</br>"; // use "."to concatinate in php 
     ?> 
         <a href = "post.php">make a post</a></br>
+        </br>
+        <?php
+           getPosts();
+
+        ?>
         <form name = "logout" action= "login.php" method = "post">
         <input type = "submit" name = "logoutButton" value = "Log Out"/>
         </form>
