@@ -69,12 +69,13 @@ function getPosts(){
     $results = $stmt->fetchAll(); // puts output in array
 
     /*prints all post title,content,date from results array starting with most recent;
-    divides all posts into divs
+    divides all posts into collapsable divs
     */
     for($i = count($results)-1; $i>=0; $i--){
         ?><div class = "posts"><?php
-        echo " <span id = 'title'>Title: </span>". $results[$i]["title"] . "</br>";
-        echo " <span id = 'date'>Date: </span>" . $results[$i]['date'] . "</br>";
+        echo " <span id = 'title'>Title: ". $results[$i]["title"] . "</span></br>";
+        echo " <span id = 'date'>Date: " . $results[$i]['date'] . "</span></br>";
+        echo " <span id = 'author'>Author: " . getUserName() . "</span></br>";
         ?><span id = 'hidden'><?php
         echo $results[$i]["content"]?>
         </span>
@@ -84,3 +85,4 @@ function getPosts(){
         
     }
 }
+?>

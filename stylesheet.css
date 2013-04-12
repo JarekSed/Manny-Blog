@@ -31,9 +31,9 @@ form{
 
 .posts{
     text-align: left;
-    width:50%;
+    width:75%;
     margin-left:20px;
-    background-color: green;
+    background-color: gold;
     padding:5px;
 
 }
@@ -48,6 +48,6 @@ form{
     
 }
 #hidden{
-    color:gold;
+    color:black;
 
 }
