@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script src="http://code.jquery.com/jquery.js"></script>
+<script  type = "text/javascript" src = "script.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <link type = "text/css" rel = "stylesheet" href = "stylesheet.css"/>
 
@@ -47,8 +48,10 @@ function getID(){
         return false;
     }
 }
+/*
+prints all posts from user
+*/
 function getPosts(){
-    //getting all of the users posts to display 
     if(!isset($_SESSION['username'])){
         return false;
         ?>
@@ -57,20 +60,27 @@ function getPosts(){
     }
     global $db;
     $id = getID();
-    $command = "SELECT content,title,date from Posts Where author_id=:value";
+    $command = "SELECT content,title,date from Posts Where author_id=:value"; //gets posts, title and date from user
     $stmt = $db->prepare($command);
     $stmt->bindParam(':value', $id);
     if(!$stmt->execute()){
         echo "Screwed up command";
     }
-    $results = $stmt->fetchAll();
+    $results = $stmt->fetchAll(); // puts output in array
 
-    //prints all post title,content,date from results array starting with most recent;
+    /*prints all post title,content,date from results array starting with most recent;
+    divides all posts into divs
+    */
     for($i = count($results)-1; $i>=0; $i--){
-        echo " Title: ". $results[$i]["title"] . "/";
-        echo " Content: " . $results[$i]["content"] . "/";
-        echo " Date: " . $results[$i]['date'];
-        echo "</br>";
+        ?><div class = "posts"><?php
+        echo " <span id = 'title'>Title: </span>". $results[$i]["title"] . "</br>";
+        echo " <span id = 'date'>Date: </span>" . $results[$i]['date'] . "</br>";
+        ?><span id = 'hidden'><?php
+        echo $results[$i]["content"]?>
+        </span>
+        </div>
+        </br>
+        <?php
+        
     }
 }
-?>

@@ -12,13 +12,14 @@
 <h3>Manny's BlogPost</h3>
 <a href = "index.php">Back to Home Page</a></br>
 <?php
-    if(strlen($_POST['postTitle']) ===0 || strlen($_POST['postTitle'] === 0)){
+    if(!isset($_POST['postTitle'])|| !isset($_POST['postTitle'])){
         echo "<strong>invalid post. input into both fields</strong></br>";
         echo  '<a href = "post.php">Make another post</a></br>';
     }else{
         $postTitle = $_POST['postTitle'];
         $postBody = $_POST['postBody'];
-    
+        unset($_POST['postTitle']);
+        unset($_POST['postBOdy']);
        $command = "INSERT INTO Posts (title, content, author_id) VALUES(:title, :content, :author_id)";
        $stmt = $db->prepare($command);
        $stmt->bindParam(':title', $postTitle);

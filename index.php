@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <head>
     <title>Manny's Blogpost</title>
 </head>
