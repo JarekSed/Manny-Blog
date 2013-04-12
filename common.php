@@ -73,9 +73,9 @@ function getPosts(){
     */
     for($i = count($results)-1; $i>=0; $i--){
         ?><div class = "posts"><?php
+        echo " <span id = 'author'>Author: " . getUserName() . "</span></br>";
         echo " <span id = 'title'>Title: ". $results[$i]["title"] . "</span></br>";
         echo " <span id = 'date'>Date: " . $results[$i]['date'] . "</span></br>";
-        echo " <span id = 'author'>Author: " . getUserName() . "</span></br>";
         ?><span id = 'hidden'><?php
         echo $results[$i]["content"]?>
         </span>
